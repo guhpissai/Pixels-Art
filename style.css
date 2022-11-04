@@ -1,3 +1,9 @@
+body {
+  width: 50%;
+  align-items: center;
+  margin: auto;
+}
+
 .color {
   border: 1px black solid;
   height: 100px;
