@@ -1,10 +1,7 @@
-#color-palette {
-  border: 1px black solid;
-}
-
-
 .color {
-  border: black solid;
-  border-width: 1px;
+  border: 1px black solid;
+  height: 100px;
+  width: 100px;
+  display: inline-block;  
 }
 
