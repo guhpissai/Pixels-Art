@@ -11,11 +11,6 @@ body {
   display: inline-block;
 }
 
-#pixel-board {
-  border: 1px black solid;
-  width: 5em, 5em;
-}
-
 .pixel {
   background-color: white;
   width: 40px;
@@ -23,3 +18,8 @@ body {
   border: 1px black solid;
   display: inline-block;
 }
+
+#pixel-board {
+  border: 1px black solid;
+}
+

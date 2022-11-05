@@ -1,3 +1,5 @@
+// Criando paleta de cores
+
 for (let index = 1; index <= 4; index += 1) {
   const pallete = document.getElementById('color-palette');
   const colors = document.createElement('div');
@@ -7,7 +9,10 @@ for (let index = 1; index <= 4; index += 1) {
 
 //  Definindo cor preta como primeira cor
 
-document.querySelector('.color').style.backgroundColor = 'black';
+let selectedColor = document.querySelector('.color');
+selectedColor.style.backgroundColor = 'black';
+selectedColor.classList.add('selected');
+
 
 // Definindo numero aleatorio
 
@@ -24,6 +29,18 @@ const randomColor = () => [
   randomNumber(0, 255),
   randomNumber(0, 255),
 ];
+
+// Criando grade de pixels
+
+const body = document.querySelector('body');
+const bigBox = document.createElement('div');
+body.appendChild(bigBox);
+bigBox.id = 'pixel-board';
+for (let index = 1; index <= 25; index += 1) {
+  const pixel = document.createElement('div');
+  pixel.classList.add('pixel');
+  bigBox.appendChild(pixel);
+}
 
 // Definindo funcao para o botao gerar cores aleatorias
 
@@ -46,17 +63,8 @@ colorButton.innerHTML = 'Cores aleatórias';
 body.appendChild(colorButton);
 colorButton.addEventListener('click', buttonColor);
 
-// Criando grade de pixels
 
-const body = document.querySelector('body');
-const bigBox = document.createElement('div');
-body.appendChild(bigBox);
-bigBox.id = 'pixel-board';
-for (let index = 1; index <= 25; index += 1) {
-  const pixel = document.createElement('div');
-  pixel.classList.add('pixel');
-  bigBox.appendChild(pixel);
-}
+
 
 
 // let storage = () => {
