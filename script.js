@@ -27,12 +27,45 @@ const buttonColor = () => {
     document.querySelectorAll(".color")[index].style.backgroundColor = textColor;
   }
 }
+
+const body = document.querySelector("body");
+const bigBox = document.createElement('div');
+body.appendChild(bigBox);
+bigBox.id= "pixel-board";
+for (index = 1; index <= 25; index += 1) {
+  const pixel = document.createElement('div');
+  pixel.classList.add("pixel");
+  bigBox.appendChild(pixel);
+}
+
 buttonColor();
 
 let colorButton = document.createElement("button");
+colorButton.id= "button-random-color";
 colorButton.innerHTML = "Cores aleatórias";
-let body = document.querySelector("body");
+
 body.appendChild(colorButton);
 colorButton.addEventListener("click", buttonColor);
 
+// let storage = () => {
+//   for (let index = 1; index <= 3; index += 1) {
+//   let saveColors = (document.querySelectorAll(".color")[index].style.backgroundColor)
+//   let arrayColors = [];
+//   arrayColors.push(saveColors);
+//   console.log(arrayColors);
+//   // localStorage.setItem("colorPalette", saveColors);
+// }
+// }
+// storage();
 
+
+// let saveColor = () => {
+//   for (index)
+// }
+
+// window.onload = function () {
+// if (localStorage.length > 0) {
+//   // let textColor = JSON.parse(localStorage.getItem("colorPalette"));
+//   console.log(textColor);
+// }
+// }
