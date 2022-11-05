@@ -5,7 +5,11 @@ for (let index = 1; index <= 4; index += 1) {
   pallete.appendChild(colors);
 }
 
+//  Definindo cor preta como primeira cor
+
 document.querySelector('.color').style.backgroundColor = 'black';
+
+// Definindo numero aleatorio
 
 const randomNumber = (min, max) => {
   const minValue = Math.ceil(min);
@@ -13,11 +17,15 @@ const randomNumber = (min, max) => {
   return Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue;
 };
 
+// Definindo RGB aleatorio
+
 const randomColor = () => [
   randomNumber(0, 255),
   randomNumber(0, 255),
   randomNumber(0, 255),
 ];
+
+// Definindo funcao para o botao gerar cores aleatorias
 
 const buttonColor = () => {
   for (let index = 1; index <= 3; index += 1) {
@@ -27,6 +35,18 @@ const buttonColor = () => {
     document.querySelectorAll('.color')[index].style.backgroundColor = textColor;
   }
 };
+buttonColor();
+
+// Criando botao para cores aleatorias
+
+const colorButton = document.createElement('button');
+colorButton.id = 'button-random-color';
+colorButton.innerHTML = 'Cores aleatórias';
+
+body.appendChild(colorButton);
+colorButton.addEventListener('click', buttonColor);
+
+// Criando grade de pixels
 
 const body = document.querySelector('body');
 const bigBox = document.createElement('div');
@@ -38,14 +58,6 @@ for (let index = 1; index <= 25; index += 1) {
   bigBox.appendChild(pixel);
 }
 
-buttonColor();
-
-const colorButton = document.createElement('button');
-colorButton.id = 'button-random-color';
-colorButton.innerHTML = 'Cores aleatórias';
-
-body.appendChild(colorButton);
-colorButton.addEventListener('click', buttonColor);
 
 // let storage = () => {
 //   for (let index = 1; index <= 3; index += 1) {
