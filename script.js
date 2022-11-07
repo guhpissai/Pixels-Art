@@ -76,16 +76,20 @@ function recebeClick(eventoDeOrigem) {
     myTarget.classList.add('selected');
 }
 
+// Criando funcao para preencher um pixel com a cor selecionada
 
+const pixelsArt = document.querySelectorAll('.pixel');
 
-// Criando funcao para pintar
+for (let index = 0; index < pixelsArt.length; index += 1) {
+  pixelsArt[index].addEventListener('click', paintPixel);
+}
 
+function paintPixel(eventOrigin) {
+  let recentColor = document.querySelector('.selected').style.backgroundColor;
+  let myPixelTarget = eventOrigin.target;
+  myPixelTarget.style.backgroundColor = recentColor;
+}
 
-// const pixelsArt = document.querySelectorAll('.pixel');
-
-// for (let index = 0; index < pixelsArt.length; index += 1) {
-//   pixelsArt[index].addEventListener('click', paintPixel);
-// }
 
 
 
