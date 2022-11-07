@@ -29,15 +29,6 @@ const randomColor = () => [
   randomNumber(0, 255),
 ];
 
-// Criando grade de pixels
-
-const pixelBoard = document.getElementById('pixel-board');
-for (let index = 1; index <= 25; index += 1) {
-  const pixel = document.createElement('div');
-  pixel.classList.add('pixel');
-  pixelBoard.appendChild(pixel);
-}
-
 // Definindo funcao para o botao gerar cores aleatorias
 
 const buttonColor = () => {
@@ -47,8 +38,8 @@ const buttonColor = () => {
     const textColor = color.toString();
     document.querySelectorAll('.color')[index].style.backgroundColor = textColor;
   }
+  saveColors();
 };
-buttonColor();
 
 // Criando botao para cores aleatorias
 
@@ -59,6 +50,38 @@ colorButton.innerHTML = 'Cores aleatórias';
 const body = document.querySelector('body');
 body.appendChild(colorButton);
 colorButton.addEventListener('click', buttonColor);
+
+
+let saveColors = () => {
+  localStorage.setItem('First Color', document.querySelectorAll('.color')[1].style.backgroundColor);
+  localStorage.setItem('Second Color', document.querySelectorAll('.color')[2].style.backgroundColor);
+  localStorage.setItem('Third Color', document.querySelectorAll('.color')[3].style.backgroundColor);
+}
+
+window.onload = function (){
+  let firstSavedColor = localStorage.getItem('First Color');
+  let secondSavedColor = localStorage.getItem('Second Color');
+  let thirdSavedColor = localStorage.getItem('Third Color');
+
+  if (localStorage.length > 0) {
+    document.querySelectorAll('.color')[1].style.backgroundColor = firstSavedColor;
+    document.querySelectorAll('.color')[2].style.backgroundColor = secondSavedColor;
+    document.querySelectorAll('.color')[3].style.backgroundColor = thirdSavedColor;
+    console.log('e');
+  } else {
+    buttonColor();
+    saveColors();
+  }
+}
+
+// Criando grade de pixels
+
+const pixelBoard = document.getElementById('pixel-board');
+for (let index = 1; index <= 25; index += 1) {
+  const pixel = document.createElement('div');
+  pixel.classList.add('pixel');
+  pixelBoard.appendChild(pixel);
+}
 
 // Criando funcao para selecionar cor na paleta
 
@@ -105,21 +128,6 @@ defaultColorButton.innerHTML = 'Limpar';
 clearButton.appendChild(defaultColorButton);
 
 clearButton.addEventListener('click', clearFrame);
-
-// let storage = () => {
-//   for (let index = 1; index <= 3; index += 1) {
-//   let saveColors = (document.querySelectorAll(".color")[index].style.backgroundColor)
-//   let arrayColors = [];
-//   arrayColors.push(saveColors);
-//   console.log(arrayColors);
-//   // localStorage.setItem("colorPalette", saveColors);
-// }
-// }
-// storage();
-
-// let saveColor = () => {
-//   for (index)
-// }
 
 // window.onload = function () {
 // if (localStorage.length > 0) {
