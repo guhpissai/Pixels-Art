@@ -90,6 +90,27 @@ function paintPixel(eventOrigin) {
   myPixelTarget.style.backgroundColor = recentColor;
 }
 
+// Criando botao que retorne a cor do quadro
+
+function clearFrame () {
+  const defaultColor = document.querySelectorAll('.pixel');
+for (i = 0; i < defaultColor.length; i += 1) {
+  defaultColor[i].style.backgroundColor = 'white';
+}
+}
+clearFrame();
+
+const clearButton = document.getElementById('clear-button');
+const defaultColorButton = document.createElement('button');
+defaultColorButton.id = 'clear-board';
+defaultColorButton.innerHTML = 'Limpar'
+clearButton.appendChild(defaultColorButton);
+
+clearButton.addEventListener('click', clearFrame);
+
+
+
+
 
 
 
