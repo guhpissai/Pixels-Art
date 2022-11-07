@@ -7,12 +7,11 @@ for (let index = 1; index <= 4; index += 1) {
   pallete.appendChild(colors);
 }
 
-//  Definindo cor preta como primeira cor
+//  Definindo cor preta como cor padrao
 
-let selectedColor = document.querySelector('.color');
+const selectedColor = document.querySelector('.color');
 selectedColor.style.backgroundColor = 'black';
 selectedColor.classList.add('selected');
-
 
 // Definindo numero aleatorio
 
@@ -62,6 +61,32 @@ colorButton.innerHTML = 'Cores aleatórias';
 
 body.appendChild(colorButton);
 colorButton.addEventListener('click', buttonColor);
+
+// Criando funcao para selecionar cor na paleta
+
+const paletteColors = document.querySelectorAll('.color');
+
+for (let index = 0; index < paletteColors.length; index += 1) {
+  paletteColors[index].addEventListener('click', recebeClick);
+}
+
+function recebeClick(eventoDeOrigem) {
+  let myTarget = eventoDeOrigem.target;
+    document.querySelector('.selected').classList.remove('selected');
+    myTarget.classList.add('selected');
+}
+
+
+
+// Criando funcao para pintar
+
+
+// const pixelsArt = document.querySelectorAll('.pixel');
+
+// for (let index = 0; index < pixelsArt.length; index += 1) {
+//   pixelsArt[index].addEventListener('click', paintPixel);
+// }
+
 
 
 
