@@ -25,7 +25,6 @@ body {
 }
 
 #pixel-board {
-  border: 1px black solid;
   width: 230px;
   height: 230px;
   display: inline-block;

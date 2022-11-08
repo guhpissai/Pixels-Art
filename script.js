@@ -29,6 +29,18 @@ const randomColor = () => [
   randomNumber(0, 255),
 ];
 
+// LocalStorage
+
+const saveColors = () => {
+  const colorArray = [];
+  const rgbValue = document.querySelectorAll('.color');
+  for (let index = 0; index < rgbValue.length; index += 1) {
+    const colors = rgbValue[index].style.backgroundColor;
+    colorArray.push(colors);
+    localStorage.setItem('colorPalette', JSON.stringify(colorArray));
+  }
+};
+
 // Definindo funcao para o botao gerar cores aleatorias
 
 const buttonColor = () => {
@@ -51,28 +63,18 @@ const body = document.querySelector('body');
 body.appendChild(colorButton);
 colorButton.addEventListener('click', buttonColor);
 
-
-let saveColors = () => {
-  localStorage.setItem('First Color', document.querySelectorAll('.color')[1].style.backgroundColor);
-  localStorage.setItem('Second Color', document.querySelectorAll('.color')[2].style.backgroundColor);
-  localStorage.setItem('Third Color', document.querySelectorAll('.color')[3].style.backgroundColor);
-}
-
-window.onload = function (){
-  let firstSavedColor = localStorage.getItem('First Color');
-  let secondSavedColor = localStorage.getItem('Second Color');
-  let thirdSavedColor = localStorage.getItem('Third Color');
-
+window.onload = function save() {
+  const savedColors = JSON.parse(localStorage.getItem('colorPalette'));
+  const colorIndex = document.querySelectorAll('.color');
   if (localStorage.length > 0) {
-    document.querySelectorAll('.color')[1].style.backgroundColor = firstSavedColor;
-    document.querySelectorAll('.color')[2].style.backgroundColor = secondSavedColor;
-    document.querySelectorAll('.color')[3].style.backgroundColor = thirdSavedColor;
-    console.log('e');
+    for (let index = 0; index < 4; index += 1) {
+      colorIndex[index].style.backgroundColor = savedColors[index];
+    }
   } else {
     buttonColor();
     saveColors();
   }
-}
+};
 
 // Criando grade de pixels
 
@@ -128,10 +130,3 @@ defaultColorButton.innerHTML = 'Limpar';
 clearButton.appendChild(defaultColorButton);
 
 clearButton.addEventListener('click', clearFrame);
-
-// window.onload = function () {
-// if (localStorage.length > 0) {
-//   // let textColor = JSON.parse(localStorage.getItem("colorPalette"));
-//   console.log(textColor);
-// }
-// }
