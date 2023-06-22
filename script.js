@@ -69,41 +69,20 @@ function saveDrawing() {
   for(i = 0; i < pixels.length; i++) {
     pixelColors.push(pixels[i].style.backgroundColor)
   }
-  localStorage.setItem('drawing', JSON.stringify(pixelColors));
+  localStorage.setItem('pixelBoard', JSON.stringify(pixelColors));
 }
-
-window.onload = function save() {
-  const savedDrawing = JSON.parse(localStorage.getItem('drawing'));
-  const savedColors = JSON.parse(localStorage.getItem('colorPalette'));
-  const pixels = document.querySelectorAll('.pixel');
-  const colorIndex = document.querySelectorAll('.color');
-  if (localStorage.length > 0) {
-    for (let index = 0; index < 4; index += 1) {
-      colorIndex[index].style.backgroundColor = savedColors[index];
-    }
-  } else {
-    buttonColor();
-    saveColors();
-  }
-  if(savedDrawing.length > 0) {
-    for(let i = 0; i < pixels.length; i++) {
-      pixels[i].style.backgroundColor = savedDrawing[i]
-    }
-  }
-};
 
 // Criando grade de pixels
 
-const pixelBoard = document.getElementById('pixel-board');
+const pixelBoard = document.getElementById('pixel-board'); 
 
-function createPixels (length = 25) {
+function createPixels (length) {
   for (let index = 1; index <= length; index += 1) {
     const pixel = document.createElement('div');
     pixel.classList.add('pixel');
     pixelBoard.appendChild(pixel);
   }
 }
-createPixels()
 
 // Criando funcao para selecionar cor na paleta
 
@@ -147,6 +126,38 @@ function clearFrame() {
   saveDrawing();
 }
 
+window.onload = function save() {
+  const savedDrawing = JSON.parse(localStorage.getItem('pixelBoard'));
+  const savedColors = JSON.parse(localStorage.getItem('colorPalette'));
+  const board = JSON.parse(localStorage.getItem('boardSize'));
+  const colorIndex = document.querySelectorAll('.color');
+  if (localStorage.length > 0) {
+    for (let index = 0; index < 4; index += 1) {
+      colorIndex[index].style.backgroundColor = savedColors[index];
+    }
+  } else {
+    buttonColor();
+    saveColors();
+  }
+  if(board) {
+    createPixels(board[0]);
+    pixelBoard.style.maxWidth = `${board[1]}px`
+    paint();
+  } else {
+    createPixels(25)
+    paint();
+  }
+  const pixels = document.querySelectorAll('.pixel');
+  for(let i = 0; i < pixels.length; i++) {
+    pixels[i].style.backgroundColor = 'white';
+  }
+  if(savedDrawing) {
+    for(let i = 0; i < pixels.length; i++) {
+      pixels[i].style.backgroundColor = savedDrawing[i]
+    }
+  }
+};
+
 const clearButton = document.getElementById('clear-button');
 const defaultColorButton = document.createElement('button');
 defaultColorButton.id = 'clear-board';
@@ -183,6 +194,7 @@ function attPixels () {
   }
   let boardPixel = boardSizeButton.value * 42
   pixelBoard.style.maxWidth = `${boardPixel}px`;
+  localStorage.setItem('boardSize', JSON.stringify([boardSize, boardPixel]));
   paint();
 }
 
