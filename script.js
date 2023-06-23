@@ -158,11 +158,11 @@ function verifySavedBoardSize() {
 // Função que verifica se existe uma paleta de cores salva no LocalStorage
 
 function verifySavedPalletColor() {
-  const savedColors = JSON.parse(localStorage.getItem('colorPalette'));
+  const colorsSaved = JSON.parse(localStorage.getItem('colorPalette'));
   const colorIndex = document.querySelectorAll('.color');
-  if (savedColors.length > 0) {
+  if (colorsSaved) {
     for (let index = 0; index < 4; index += 1) {
-      colorIndex[index].style.backgroundColor = savedColors[index];
+      colorIndex[index].style.backgroundColor = colorsSaved[index];
     }
   } else {
     buttonColor();
@@ -195,11 +195,21 @@ clearButton.appendChild(defaultColorButton);
 clearButton.appendChild(boardSizeButton);
 clearButton.appendChild(vqmButton);
 
-function attPixels() {
-  const boardSize = boardSizeButton.value * boardSizeButton.value;
-  if (!boardSize) {
+function validSizeButton() {
+  if (!boardSizeButton.value) {
     return window.alert('Board inválido!');
   }
+  if (boardSizeButton.value < 5) {
+    boardSizeButton.value = 5;
+  }
+  if (boardSizeButton.value > 50) {
+    boardSizeButton.value = 50;
+  }
+}
+
+function attPixels() {
+  validSizeButton();
+  const boardSize = boardSizeButton.value * boardSizeButton.value;
   const pixels = document.querySelectorAll('.pixel');
   for (let i = 0; i < pixels.length; i += 1) {
     pixels[i].remove();
