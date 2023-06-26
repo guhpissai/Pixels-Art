@@ -34,4 +34,4 @@ cd Trybe-Project-Pixels-Art
 
 6. Para limpar o quadro, clique no botão "Limpar".
 
-7 Para aumentar o quadro utilize o botão "VQM".
+7. Para aumentar o quadro utilize o botão "VQM".
