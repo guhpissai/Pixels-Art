@@ -1,13 +1,37 @@
-# :construction: README customizado em construção ! :construction:
-<!-- Olá, Tryber!
-Esse é apenas um arquivo inicial para o README do seu projeto no qual você pode customizar e reutilizar todas as vezes que for executar o trybe-publisher.
+# Pixels Art
 
-Para deixá-lo com a sua cara, basta alterar o seguinte arquivo da sua máquina: ~/.student-repo-publisher/custom/_NEW_README.md
+Este é um projeto do Pixels Art, uma aplicação web que permite criar obras de arte pixeladas. A aplicação é desenvolvida usando HTML, JavaScript e CSS, e utiliza o DOM para criar um quadro de pixels que pode ser pintado.
 
-É essencial que você preencha esse documento por conta própria, ok?
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
-:warning: IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
--->
+## Funcionalidades
+
+- **Quadro de pixels**: A aplicação exibe um quadro composto por uma grade de pixels. Cada pixel pode ser colorido individualmente.
+
+- **Seleção de cor**: A aplicação oferece uma paleta de cores para selecionar a cor desejada. Ao clicar em uma cor da paleta, a cor selecionada é destacada.
+
+- **Pintura de pixels**: Com a cor selecionada, é possível pintar os pixels do quadro clicando sobre eles. Ao clicar em um pixel, ele é preenchido com a cor selecionada.
+
+- **Limpar quadro**: Existe um botão para limpar todo o quadro, permitindo recomeçar do zero.
+
+## Como usar
+
+1. Clone este repositório para o seu computador:
+
+```bash
+git clone https://github.com/seu-usuario/pixels-art.git
+```
+
+2. Navegue até o diretório do projeto:
+
+```bash
+cd Trybe-Project-Pixels-Art
+```
+
+3. Abra o arquivo index.html em um navegador web.
+
+4. Selecione uma cor da paleta clicando sobre ela.
+
+5. Pinte os pixels do quadro clicando sobre eles.
+
+6. Para limpar o quadro, clique no botão "Limpar".
+
+7 Para aumentar o quadro utilize o botão "VQM".
